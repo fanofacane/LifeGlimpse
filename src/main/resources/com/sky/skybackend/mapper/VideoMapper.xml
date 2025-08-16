@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.skybackend.mapper.VideoMapper">
+    <update id="updateVideoCount">
+        UPDATE video
+        <set>
+            <if test="type == 0">
+                like_count = like_count + #{count}
+            </if>
+            <if test="type == 1">
+                collect_count = collect_count + #{count}
+            </if>
+            <if test="type == 2">
+                watch_count = watch_count + #{count}
+            </if>
+        </set>
+        WHERE id = #{videoId}
+    </update>
+    <!-- 批量插入标签关联 -->
+    <insert id="insertTags" parameterType="java.util.Map">
+        INSERT INTO `video_tag_relation` (`video_id`, `tag_id`)
+        VALUES
+        <foreach collection="tags" item="tagId" separator=",">
+            (#{videoId}, #{tagId})
+        </foreach>
+    </insert>
+    <select id="queryMoreVideo" resultType="com.sky.skybackend.domain.vo.VideoVO">
+        SELECT DISTINCT v.*
+        FROM video v
+        JOIN video_tag_relation vtr ON v.id = vtr.video_id
+        WHERE 1=1
+        <if test="tags != null and tags.size() > 0">
+            AND vtr.tag_id IN
+            <foreach collection="tags" item="tagItem" open="(" separator="," close=")">
+                #{tagItem}
+            </foreach>
+        </if>
+
+        <!-- 游标分页条件 -->
+        <if test="cursorId != null and cursorTime != null">
+            <!-- 对于 DESC 排序，我们需要查找 publish_time 小于等于 lastPublishTime 的记录 -->
+            <!-- 如果 publish_time 相同，则查找 id 小于 lastId 的记录 (因为 ID 也是 DESC) -->
+            AND (
+            v.create_time <![CDATA[ < ]]> #{cursorTime}
+            OR (v.create_time = #{cursorTime} AND v.id <![CDATA[ < ]]> #{cursorId})
+            )
+        </if>
+
+        ORDER BY v.create_time DESC, v.id DESC
+        LIMIT #{size}
+    </select>
+
+    <select id="getMatchVideoByKey" resultType="com.sky.skybackend.domain.vo.VideoVO">
+        SELECT * FROM video WHERE
+        title LIKE CONCAT('%', #{key}, '%')
+        OR description LIKE CONCAT('%', #{key}, '%')
+        ORDER BY
+        create_time DESC
+    </select>
+
+    <select id="getVideoByActionType" resultType="com.sky.skybackend.domain.vo.VideoVO">
+        SELECT v.* FROM video v INNER JOIN user_action ua ON v.id = ua.video_id
+        WHERE
+        ua.user_id = #{userId}
+        AND ua.type = #{type}
+        ORDER BY
+        ua.create_time DESC
+    </select>
+
+    <select id="getVideoByFollowIds" resultType="com.sky.skybackend.domain.vo.VideoVO">
+        SELECT * FROM video WHERE user_id IN
+        <foreach collection="followedIds" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        ORDER BY
+        create_time DESC
+    </select>
+
+    <select id="getVideoByVideoIds" resultType="com.sky.skybackend.domain.vo.VideoVO">
+        SELECT * FROM video WHERE id IN
+        <foreach item="id" collection="videoIds" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

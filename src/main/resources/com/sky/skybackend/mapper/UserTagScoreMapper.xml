@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.skybackend.mapper.UserTagScoreMapper">
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO user_tag_score (user_id, tag_id, raw_score, normalized_score, window_start_time, window_end_time)
+        VALUES
+        <foreach collection="tagScore" item="item" separator=",">
+            (#{item.userId}, #{item.tagId}, #{item.rawScore}, #{item.normalizedScore}, #{item.windowStartTime}, #{item.windowEndTime})
+        </foreach>
+    </insert>
+
+
+</mapper>

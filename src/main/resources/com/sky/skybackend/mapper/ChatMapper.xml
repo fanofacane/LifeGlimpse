@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.skybackend.mapper.ChatMapper">
+
+    <!-- 获取聊天历史中涉及的对方ID -->
+    <select id="getChatHistoryIds" resultType="java.lang.Integer">
+        SELECT DISTINCT
+        CASE
+        WHEN `to` = #{userId} THEN `from`
+        ELSE `to`
+        END
+        FROM message
+        WHERE `to` = #{userId} OR `from` = #{userId}
+    </select>
+    <!--
+        核心优化SQL：一次性获取聊天用户列表及其未读消息数和最后一条消息
+        参数: chatUserIds,currentUserId
+        返回: List<ChatUserVO>
+     -->
+    <select id="getChatUsersWithFullDetails" resultType="com.sky.skybackend.domain.vo.ChatUserVO">
+        SELECT
+        u.id,
+        u.nick_name AS nickName,
+        u.avatar,
+        COALESCE(uc.unread_count, 0) AS unreadCount,
+        lm.content,
+        lm.create_time AS createTime
+        FROM
+        `user` u
+        LEFT JOIN (
+        SELECT
+        `from` AS chat_partner_id,
+        COUNT(id) AS unread_count
+        FROM
+        message
+        WHERE
+        `to` = #{currentUserId} AND is_read = 0
+        GROUP BY
+        `from`
+        ) uc ON u.id = uc.chat_partner_id
+        LEFT JOIN (
+        SELECT
+        m.content,
+        m.create_time,
+        CASE
+        WHEN m.`from` = #{currentUserId} THEN m.`to`
+        ELSE m.`from`
+        END AS chat_partner_id
+        FROM (
+        SELECT
+        id, `from`, `to`, content, create_time,
+        ROW_NUMBER() OVER (
+        PARTITION BY CASE WHEN `from` = #{currentUserId} THEN `to` ELSE `from` END
+        ORDER BY create_time DESC, id DESC
+        ) as rn
+        FROM
+        message
+        WHERE
+        `from` = #{currentUserId} OR `to` = #{currentUserId}
+        ) m
+        WHERE m.rn = 1
+        ) lm ON u.id = lm.chat_partner_id
+        WHERE
+        u.id IN
+        <foreach item="chatUserId" collection="chatUserIds" open="(" separator="," close=")">
+            #{chatUserId}
+        </foreach>
+        ORDER BY
+        lm.create_time DESC, u.id DESC;
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sky.skybackend.mapper.UserActionMapper">
+
+
+
+    <select id="batchCheckStatusExists" resultType="com.sky.skybackend.domain.pojo.Status">
+        SELECT
+        video_id AS id,
+        COUNT(id) > 0 AS status
+        FROM
+        user_action
+        WHERE
+        user_id = #{userId}
+        AND video_id IN
+        <foreach item="videoId" collection="videoIds" open="(" separator="," close=")">
+            #{videoId}
+        </foreach>
+        AND type = #{type}
+        GROUP BY
+        video_id
+    </select>
+
+</mapper>

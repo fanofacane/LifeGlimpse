@@ -11,4 +11,10 @@
 - 去除原有的springWebsocket,使用Netty框架
 - mybatis替换为Mybatis-plus减少不必要的crud
 # 技术栈
-- **SpringBoot** **SpringAI** **Netty** **Mysql** **Mybatis-plus** **Redis** **MinIo**
+- **SpringBoot**
+- **SpringAI**
+- **Netty**
+- **Mysql**
+- **Mybatis-plus**
+- **Redis**
+- **MinIo**

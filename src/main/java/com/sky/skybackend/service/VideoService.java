@@ -6,6 +6,7 @@ import com.sky.skybackend.domain.dto.VideoDTO;
 import com.sky.skybackend.domain.pojo.UserAction;
 import com.sky.skybackend.domain.pojo.Video;
 import com.sky.skybackend.domain.vo.CommentVO;
+import com.sky.skybackend.domain.vo.HotVideo;
 import com.sky.skybackend.domain.vo.VideoVO;
 import org.apache.ibatis.annotations.Update;
 
@@ -26,4 +27,8 @@ public interface VideoService extends IService<Video> {
     List<VideoVO> getVideoByActionType(Integer userId, int type);
 
     Map<String, Object> getInboxVideos(Integer count, Long lastTimestamp);
+
+    List<HotVideo> getHotRank();
+
+    List<VideoVO> getHotVideos();
 }

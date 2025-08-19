@@ -1,6 +1,7 @@
 package com.sky.skybackend.ws;
 
-import com.alibaba.fastjson.JSON;
+
+import com.alibaba.fastjson2.JSON;
 import com.sky.skybackend.domain.pojo.Message;
 import com.sky.skybackend.domain.pojo.WebSocketConnectionManager;
 import com.sky.skybackend.service.ChatService;

@@ -25,15 +25,20 @@ public class TokenFilter implements Filter {
         String requestURI = request.getRequestURI();
 
         //2. 判断是否是通用请求
-        if (requestURI.contains("/login")||requestURI.contains("/recommend")||
+/*        if (requestURI.contains("/login")||requestURI.contains("/recommend")||
             requestURI.contains("/register")||requestURI.contains("/chat")||
             requestURI.contains("/getInfo")||requestURI.contains("/match")||
-            requestURI.contains("/getRecommend")||requestURI.contains("/AIService")||requestURI.contains("/upload"))
+            requestURI.contains("/getRecommend")||requestURI.contains("/AIService")||requestURI.contains("/upload")||requestURI.contains("/Test"))
         {
             log.info("通用请求, 放行");
             filterChain.doFilter(request, response);
             return;
+        }*/
+        if (true){
+            filterChain.doFilter(request, response);
+            return;
         }
+
         //3. 获取请求头中的token
         String token = request.getHeader("token");
 

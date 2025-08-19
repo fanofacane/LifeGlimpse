@@ -61,8 +61,7 @@ public class VideoUtil {
         return score != null ? score.longValue() : null;
     }
     public List<VideoVO> getFeedVideo(List<Integer> videoIds) {
-//        Integer userId = CurrentHolder.getCurrentId();
-        Integer userId = 2;
+        Integer userId = CurrentHolder.getCurrentId();
         List<VideoVO> videoList = null;
         if (videoIds.isEmpty()){
             List<Integer> followedIds = followMapper.getFollowIdList(userId);

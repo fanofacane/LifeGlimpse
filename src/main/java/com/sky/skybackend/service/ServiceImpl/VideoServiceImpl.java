@@ -3,21 +3,26 @@ package com.sky.skybackend.service.ServiceImpl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sky.skybackend.Enum.Constant;
 import com.sky.skybackend.domain.dto.VideoDTO;
 import com.sky.skybackend.domain.pojo.*;
+import com.sky.skybackend.domain.vo.HotVideo;
 import com.sky.skybackend.domain.vo.VideoVO;
 import com.sky.skybackend.mapper.VideoMapper;
 import com.sky.skybackend.service.VideoService;
 import com.sky.skybackend.utils.CurrentHolder;
+import com.sky.skybackend.utils.RedisCacheUtil;
 import com.sky.skybackend.utils.VideoUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.*;
 
-import static com.sky.skybackend.Enum.Constant.DEFAULT_TAGS_COUNT;
+import static com.sky.skybackend.Enum.Constant.*;
 
 @Service
 @Slf4j
@@ -28,7 +33,12 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
     private VideoMapper videoMapper;
     @Autowired
     private VideoUtil videoUtil;
-    private static final String FEED_INBOX_PREFIX = "feed:inbox:";
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+    @Autowired
+    private ObjectMapper objectMapper;
+    @Autowired
+    private RedisCacheUtil redisCacheUtil;
     @Override
     public Map<String, Object> queryMoreVideo(Integer userId, Integer cursor, int size) {
         /*
@@ -72,7 +82,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
     @Override
     public void insert(VideoDTO videoDTO) {
         Video video = BeanUtil.copyProperties(videoDTO, Video.class);
-        video.setReviewStatus(Constant.REVIEW_VIDEOS_STATUS);
+        video.setReviewStatus(REVIEW_VIDEOS_STATUS);
         save(video);
         videoMapper.insertTags(video.getId(),videoDTO.getTags());
     }
@@ -104,5 +114,47 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
         result.put("data", feedVideo);
         result.put("lastTimestamp", lastTimestamp1);
         return result;
+    }
+
+    @Override
+    public List<HotVideo> getHotRank() {
+        Set<ZSetOperations.TypedTuple<String>> zSet = redisTemplate.opsForZSet().reverseRangeWithScores(REDIS_HOT_RANK_KEY, 0, -1);
+        List<HotVideo> hotVideos=new ArrayList<>();
+        for (ZSetOperations.TypedTuple<String> tuple : zSet){
+            final HotVideo hotVideo;
+            try {
+                hotVideo = objectMapper.readValue(tuple.getValue().toString(), HotVideo.class);
+                hotVideo.setHot(tuple.getScore());
+                hotVideo.hotFormat();
+                hotVideos.add(hotVideo);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return hotVideos;
+    }
+
+    @Override
+    public List<VideoVO> getHotVideos() {
+        Integer userId = CurrentHolder.getCurrentId();
+        Calendar calendar = Calendar.getInstance();
+        int today = calendar.get(Calendar.DATE);
+        HashMap<String,Integer> map = new HashMap<>();
+        map.put(HOT_VIDEO+today,12);
+        map.put(HOT_VIDEO+(today-1),5);
+        map.put(HOT_VIDEO+(today-2),3);
+        List<Integer> hotVideoIds = redisCacheUtil.pipeline(connection -> {
+            map.forEach((k, v) -> {
+                connection.sRandMember(k.getBytes(), v);
+            });
+            return null;
+        });
+        List<Integer> videoIds = new ArrayList<>();
+        for (Object ids : hotVideoIds) {
+            videoIds.addAll( (List) ids);
+        }
+        List<VideoVO> videos = videoMapper.getVideoByVideoIds(videoIds);
+        videoUtil.FillVideoInfo(userId, videos);
+        return videoIds.isEmpty() ? List.of() : videos;
     }
 }

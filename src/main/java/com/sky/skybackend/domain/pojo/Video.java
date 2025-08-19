@@ -23,5 +23,6 @@ public class Video {
     private Integer collectCount;
     private Integer commentCount;
     private Integer watchCount;
+    private Integer shareCount;
     private LocalDateTime createTime;
 }

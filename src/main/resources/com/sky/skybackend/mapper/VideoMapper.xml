@@ -15,6 +15,9 @@
             <if test="type == 2">
                 watch_count = watch_count + #{count}
             </if>
+            <if test="type == 3">
+                share_count = share_count + #{count}
+            </if>
         </set>
         WHERE id = #{videoId}
     </update>

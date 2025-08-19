@@ -12,7 +12,7 @@ public class UserAction {
     private Integer id;
     private Integer userId;
     private Integer videoId;
-    private Integer type;  // 1-观看，2-点赞，3-收藏，4-分享，5-评论，6-跳过
+    private Integer type;  // 1-观看，2-点赞，3-收藏，4-分享
     private LocalDateTime createTime;
     public UserAction() {}
 

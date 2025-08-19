@@ -14,8 +14,10 @@ import java.util.List;
 @Mapper
 public interface VideoMapper extends BaseMapper<Video> {
     void updateVideoCount(Integer videoId, Integer type, Integer count);
+
     @Update("update video set comment_count = comment_count + 1 where id = #{videoId}")
     void increCommentCount(Integer videoId);
+
     @Select("select id from tags order by RAND() limit 5")
     List<Integer> getRandomTags();
 

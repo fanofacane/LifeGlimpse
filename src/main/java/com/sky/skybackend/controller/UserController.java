@@ -18,12 +18,22 @@ import java.util.HashMap;
 public class UserController {
     @Autowired
     private UserService userService;
-    //查询用户基本信息
+
+    /**
+     * 查询用户信息
+     * @param id 用户id
+     * @return userVo
+     */
     @GetMapping("/getInfo/{id}")
     public Result getUserById(@PathVariable Integer id) {
         return Result.success(BeanUtil.copyProperties(userService.getById(id), UserVO.class));
     }
-    //修改用户信息
+
+    /**
+     * 修改用户信息
+     * @param user 用户
+     * @return
+     */
     @PostMapping("/updateInfo")
     public Result updateUserInfo(@RequestBody User user) {
         if (!userService.updateById(user)) return Result.error("修改失败");
@@ -31,6 +41,8 @@ public class UserController {
     }
     /**
      * 登录
+     * @param loginDTO 登录信息
+     * @return LoginVO
      */
     @PostMapping("/login")
     public Result login(@RequestBody LoginDTO loginDTO){

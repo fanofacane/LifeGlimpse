@@ -15,10 +15,4 @@
 - 在定时任务中进行快速分页结合TopK实现热度视频推送
 - 加入标签算法,使用滑动窗口和用户行为动态计算用户偏好,精确的推荐视频
 # 技术栈
-- **SpringBoot**
-- **SpringAI**
-- **Netty**
-- **Mysql**
-- **Mybatis-plus**
-- **Redis**
-- **MinIo**
+- **SpringBoot**,**SpringAI**,**Netty**,**Mysql**,**Mybatis-plus**,**Redis**,**MinIo**

@@ -7,6 +7,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 import java.util.Random;
@@ -66,5 +67,18 @@ public class ChatController {
                 .call()
                 .content();
     }
-
+    /**
+     * AI流式对话
+     * @param msg 消息
+     * @param userId 用户ID
+     * @return string
+     */
+    @GetMapping(value = "/AIService2",produces = "text/html;charset=utf-8")
+    public Flux<String> chatFluxAI(@RequestParam String msg, @RequestParam Integer userId){
+        return chatClient.prompt()
+                .user(msg)
+                .advisors(a-> a.param(chatMemory.CONVERSATION_ID,userId))
+                .stream()
+                .content();
+    }
 }

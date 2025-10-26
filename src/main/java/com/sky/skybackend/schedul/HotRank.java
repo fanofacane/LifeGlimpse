@@ -64,6 +64,7 @@ public class HotRank {
                 offset += BATCH_SIZE;
                 
             } while (videos.size() == BATCH_SIZE);
+
             System.out.println("offset:"+ offset);
             // 获取Top10热度视频
             List<HotVideo> topVideos = topK.get();

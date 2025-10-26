@@ -43,8 +43,7 @@ public class VideoUtil {
             videoIdStrs = redisTemplate.opsForZSet().reverseRange(inboxKey, 0, count - 1);
         } else {
             // 分页查询，获取比lastTimestamp更早的视频
-            videoIdStrs = redisTemplate.opsForZSet()
-                    .reverseRangeByScore(inboxKey, 0, lastTimestamp - 1, 0, count);
+            videoIdStrs = redisTemplate.opsForZSet().reverseRangeByScore(inboxKey, 0, lastTimestamp - 1, 0, count);
         }
         if (videoIdStrs == null || videoIdStrs.isEmpty()) return List.of();
         // 转换为Long类型的视频ID列表

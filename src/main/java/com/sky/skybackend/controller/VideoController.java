@@ -1,6 +1,8 @@
 package com.sky.skybackend.controller;
 
 
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONObject;
 import com.sky.skybackend.Enum.Constant;
 import com.sky.skybackend.domain.dto.CommentDTO;
 import com.sky.skybackend.domain.dto.VideoDTO;
@@ -12,6 +14,7 @@ import com.sky.skybackend.schedul.HotRank;
 import com.sky.skybackend.service.CommentService;
 import com.sky.skybackend.service.ServiceImpl.SlidingWindowTagScorerService;
 import com.sky.skybackend.service.VideoService;
+import com.sky.skybackend.utils.AliyunVideoAuditTool;
 import com.sky.skybackend.utils.MinioUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +42,7 @@ public class VideoController {
     public Result upload(MultipartFile file) throws Exception {
         //MinIO对象存储
         String url = minioUtil.uploadFile("origin",file);
+        System.out.println("文件路径"+url);
         return Result.success(url);
     }
 
@@ -49,7 +53,7 @@ public class VideoController {
      */
     @PostMapping("/public")
     public Result publicVideo(@RequestBody VideoDTO videoDTO) {
-            videoService.insert(videoDTO);
+        videoService.insert(videoDTO);
         return Result.success("发布成功");
     }
 

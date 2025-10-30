@@ -31,4 +31,6 @@ public interface VideoService extends IService<Video> {
     List<HotVideo> getHotRank();
 
     List<VideoVO> getHotVideos();
+
+    List<VideoVO> getVideoByUserId(Integer userId);
 }

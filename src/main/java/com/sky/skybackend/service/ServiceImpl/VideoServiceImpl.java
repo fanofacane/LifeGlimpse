@@ -6,14 +6,12 @@ import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sky.skybackend.Enum.Constant;
 import com.sky.skybackend.domain.dto.VideoDTO;
 import com.sky.skybackend.domain.pojo.*;
 import com.sky.skybackend.domain.vo.HotVideo;
 import com.sky.skybackend.domain.vo.VideoVO;
 import com.sky.skybackend.mapper.VideoMapper;
 import com.sky.skybackend.service.VideoService;
-import com.sky.skybackend.utils.AliyunVideoAuditTool;
 import com.sky.skybackend.utils.CurrentHolder;
 import com.sky.skybackend.utils.RedisCacheUtil;
 import com.sky.skybackend.utils.VideoUtil;
@@ -88,14 +86,6 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
         Video video = BeanUtil.copyProperties(videoDTO, Video.class);
         video.setReviewStatus(REVIEW_VIDEOS_STATUS);
         save(video);
-        Thread asyncThread = new Thread(() -> {
-            try {
-                videoAudit(video.getId(),video.getUrl());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        asyncThread.start(); // 启动异步线程
         videoMapper.insertTags(video.getId(), videoDTO.getTags());
     }
 
@@ -170,58 +160,15 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
         return videoIds.isEmpty() ? List.of() : videos;
     }
 
-    public void videoAudit(Integer videoId,String url) {
-        try {
-            // 1. 初始化（实际项目中建议在启动类初始化一次）
-            String regionId = "cn-shanghai"; // 替换为你的地域
-            String accessKeyId = System.getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"); // 从环境变量获取
-            String accessKeySecret = System.getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"); // 从环境变量获取
-            AliyunVideoAuditTool.init(regionId, accessKeyId, accessKeySecret);
-            // 2. 调用审核（传入视频URL）
-            JSONObject auditResult = AliyunVideoAuditTool.auditVideo(url);
-
-            // 3. 业务解析
-            // 1. 先判断任务是否成功完成
-            if (!"FINISHED".equals(auditResult.getString("status")) || auditResult.getIntValue("code") != 200) {
-                System.out.println("审核任务未正常完成：" + auditResult.getString("msg"));
-                return;
-            }
-            // 2. 解析色情场景结果（判断是否违规）
-            boolean isPornViolation = false;
-            JSONArray pornArray = auditResult.getJSONArray("porn");
-            for (int i = 0; i < pornArray.size(); i++) {
-                JSONObject pornFrame = pornArray.getJSONObject(i);
-                String label = pornFrame.getString("label");
-                // 若存在色情/性感/低俗标签，判定为违规
-                if ("porn".equals(label) || "sexy".equals(label) || "vulgar".equals(label)) {
-                    isPornViolation = true;
-                    System.out.println("色情违规帧：" + pornFrame.getString("url"));
-                    System.out.println("违规时间点：" + pornFrame.getLongValue("timestamp") + "毫秒");
-                    break; // 只要有一帧违规，即可判定视频违规
-                }
-            }
-
-            // 3. 解析暴恐场景结果（逻辑同色情）
-            boolean isTerrorViolation = false;
-            JSONArray terrorismArray = auditResult.getJSONArray("terrorism");
-            for (int i = 0; i < terrorismArray.size(); i++) {
-                JSONObject terrorFrame = terrorismArray.getJSONObject(i);
-                if ("terrorism".equals(terrorFrame.getString("label"))) {
-                    isTerrorViolation = true;
-                    System.out.println("暴恐违规帧：" + terrorFrame.getString("url"));
-                    break;
-                }
-            }
-
-            // 4. 业务决策：有任一违规则拦截，否则通过
-            if (isPornViolation || isTerrorViolation) {
-                System.out.println("视频存在违规内容，执行拦截逻辑");
-                // 此处添加你的业务逻辑：如删除视频、拒绝发布、发送通知等
-            } else {
-                System.out.println("视频审核通过，执行发布逻辑");
-            }
-        }catch (Exception e){
-            System.out.println("视频审核失败");
-        }
+    @Override
+    public List<VideoVO> getVideoByUserId(Integer userId) {
+        List<VideoVO> videoList = lambdaQuery()
+                .eq(Video::getUserId, userId)
+                .list()
+                .stream()
+                .map(video -> BeanUtil.copyProperties(video, VideoVO.class))
+                .toList();
+        videoUtil.FillVideoInfo(userId, videoList);
+        return videoList;
     }
 }

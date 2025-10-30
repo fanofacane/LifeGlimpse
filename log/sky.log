@@ -1,310 +1,381 @@
-2025-10-26T19:15:30.167+08:00  INFO 9472 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 9472 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
-2025-10-26T19:15:30.172+08:00  INFO 9472 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-10-26T19:15:30.937+08:00  INFO 9472 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-10-26T19:15:30.939+08:00  INFO 9472 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-10-26T19:15:30.970+08:00  INFO 9472 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-2025-10-26T19:15:31.540+08:00  INFO 9472 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-2025-10-26T19:15:31.553+08:00  INFO 9472 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-10-26T19:15:31.553+08:00  INFO 9472 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-10-26T19:15:31.613+08:00  INFO 9472 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-10-26T19:15:31.614+08:00  INFO 9472 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1404 ms
-2025-10-26T19:15:31.728+08:00  INFO 9472 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-10-26T19:15:32.034+08:00  INFO 9472 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c9e19de
-2025-10-26T19:15:32.036+08:00  INFO 9472 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-10-26T19:15:32.046+08:00  WARN 9472 --- [in_sky1] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'skyBackendApplication': Unsatisfied dependency expressed through field 'webSocketServer': Error creating bean with name 'webSocketServer': Unsatisfied dependency expressed through field 'webSocketChannelInitializer': Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-2025-10-26T19:15:32.046+08:00  INFO 9472 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-10-26T19:15:32.050+08:00  INFO 9472 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-10-26T19:15:32.052+08:00  INFO 9472 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2025-10-26T19:15:32.063+08:00  INFO 9472 --- [in_sky1] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-10-26T19:15:32.077+08:00 ERROR 9472 --- [in_sky1] [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'skyBackendApplication': Unsatisfied dependency expressed through field 'webSocketServer': Error creating bean with name 'webSocketServer': Unsatisfied dependency expressed through field 'webSocketChannelInitializer': Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.9.jar:6.2.9]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.9.jar:6.2.9]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.4.jar:3.5.4]
-	at com.sky.skybackend.SkyBackendApplication.main(SkyBackendApplication.java:21) ~[classes/:na]
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSocketServer': Unsatisfied dependency expressed through field 'webSocketChannelInitializer': Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 22 common frames omitted
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 35 common frames omitted
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 48 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 62 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jdbcChatMemoryScriptDatabaseInitializer' defined in class path resource [org/springframework/ai/model/chat/memory/repository/jdbc/autoconfigure/JdbcChatMemoryRepositoryAutoConfiguration.class]: No schema scripts found at location 'classpath:org/springframework/ai/chat/memory/repository/jdbc/schema-mysql.sql'
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 75 common frames omitted
-Caused by: java.lang.IllegalStateException: No schema scripts found at location 'classpath:org/springframework/ai/chat/memory/repository/jdbc/schema-mysql.sql'
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.getScripts(AbstractScriptDatabaseInitializer.java:129) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:106) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applySchemaScripts(AbstractScriptDatabaseInitializer.java:98) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 84 common frames omitted
-
-2025-10-26T19:18:25.542+08:00  INFO 19376 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 19376 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
-2025-10-26T19:18:25.544+08:00  INFO 19376 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-10-26T19:18:26.233+08:00  INFO 19376 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-10-26T19:18:26.235+08:00  INFO 19376 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-10-26T19:18:26.262+08:00  INFO 19376 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-2025-10-26T19:18:26.741+08:00  INFO 19376 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-2025-10-26T19:18:26.754+08:00  INFO 19376 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-10-26T19:18:26.754+08:00  INFO 19376 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-10-26T19:18:26.810+08:00  INFO 19376 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-10-26T19:18:26.810+08:00  INFO 19376 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1231 ms
-2025-10-26T19:18:26.916+08:00  INFO 19376 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-10-26T19:18:27.188+08:00  INFO 19376 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6abb7b7d
-2025-10-26T19:18:27.190+08:00  INFO 19376 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-10-26T19:18:27.199+08:00  WARN 19376 --- [in_sky1] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'skyBackendApplication': Unsatisfied dependency expressed through field 'webSocketServer': Error creating bean with name 'webSocketServer': Unsatisfied dependency expressed through field 'webSocketChannelInitializer': Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-2025-10-26T19:18:27.199+08:00  INFO 19376 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-10-26T19:18:27.202+08:00  INFO 19376 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-10-26T19:18:27.204+08:00  INFO 19376 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2025-10-26T19:18:27.213+08:00  INFO 19376 --- [in_sky1] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-10-26T19:18:27.227+08:00 ERROR 19376 --- [in_sky1] [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'skyBackendApplication': Unsatisfied dependency expressed through field 'webSocketServer': Error creating bean with name 'webSocketServer': Unsatisfied dependency expressed through field 'webSocketChannelInitializer': Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.9.jar:6.2.9]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.9.jar:6.2.9]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.4.jar:3.5.4]
-	at com.sky.skybackend.SkyBackendApplication.main(SkyBackendApplication.java:21) ~[classes/:na]
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSocketServer': Unsatisfied dependency expressed through field 'webSocketChannelInitializer': Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 22 common frames omitted
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSocketChannelInitializer': Unsatisfied dependency expressed through field 'chatService': Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 35 common frames omitted
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 48 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'chatMapper' defined in file [D:\software\GitProject\skyBackend\target\classes\com\sky\skybackend\mapper\ChatMapper.class]: Cannot resolve reference to bean 'sqlSessionTemplate' while setting bean property 'sqlSessionTemplate'
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 62 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jdbcChatMemoryScriptDatabaseInitializer' defined in class path resource [org/springframework/ai/model/chat/memory/repository/jdbc/autoconfigure/JdbcChatMemoryRepositoryAutoConfiguration.class]: No schema scripts found at location 'classpath:org/springframework/ai/chat/memory/repository/jdbc/schema-mysql.sql'
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 75 common frames omitted
-Caused by: java.lang.IllegalStateException: No schema scripts found at location 'classpath:org/springframework/ai/chat/memory/repository/jdbc/schema-mysql.sql'
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.getScripts(AbstractScriptDatabaseInitializer.java:129) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:106) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applySchemaScripts(AbstractScriptDatabaseInitializer.java:98) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.5.4.jar:3.5.4]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.9.jar:6.2.9]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.9.jar:6.2.9]
-	... 84 common frames omitted
-
-2025-10-26T19:21:22.814+08:00  INFO 17964 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 17964 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
-2025-10-26T19:21:22.816+08:00  INFO 17964 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-10-26T19:21:23.512+08:00  INFO 17964 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-10-26T19:21:23.515+08:00  INFO 17964 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-10-26T19:21:23.541+08:00  INFO 17964 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-2025-10-26T19:21:24.018+08:00  INFO 17964 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-2025-10-26T19:21:24.039+08:00  INFO 17964 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-10-26T19:21:24.039+08:00  INFO 17964 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-10-26T19:21:24.095+08:00  INFO 17964 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-10-26T19:21:24.096+08:00  INFO 17964 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1244 ms
-2025-10-26T19:21:24.211+08:00  INFO 17964 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-10-26T19:21:24.502+08:00  INFO 17964 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6728370a
-2025-10-26T19:21:24.503+08:00  INFO 17964 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-10-26T19:21:25.479+08:00  INFO 17964 --- [in_sky1] [main] com.sky.skybackend.config.RedisConfig    : RedisTemplate配置完成
-2025-10-26T19:21:26.394+08:00  INFO 17964 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
-2025-10-26T19:21:26.404+08:00  INFO 17964 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Started SkyBackendApplication in 3.99 seconds (process running for 4.553)
-2025-10-26T19:23:05.127+08:00  INFO 17964 --- [in_sky1] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-10-26T19:23:05.136+08:00  INFO 17964 --- [in_sky1] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-10-26T19:23:05.149+08:00  INFO 17964 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-10-26T19:23:05.154+08:00  INFO 17964 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-10-26T19:23:08.753+08:00  INFO 10636 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 10636 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
-2025-10-26T19:23:08.754+08:00  INFO 10636 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-10-26T19:23:09.445+08:00  INFO 10636 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-10-26T19:23:09.448+08:00  INFO 10636 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-10-26T19:23:09.474+08:00  INFO 10636 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-2025-10-26T19:23:09.946+08:00  INFO 10636 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-2025-10-26T19:23:09.958+08:00  INFO 10636 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-10-26T19:23:09.958+08:00  INFO 10636 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-10-26T19:23:10.013+08:00  INFO 10636 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-10-26T19:23:10.014+08:00  INFO 10636 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1223 ms
-2025-10-26T19:23:10.116+08:00  INFO 10636 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-10-26T19:23:10.384+08:00  INFO 10636 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6728370a
-2025-10-26T19:23:10.386+08:00  INFO 10636 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-10-26T19:23:11.256+08:00  INFO 10636 --- [in_sky1] [main] com.sky.skybackend.config.RedisConfig    : RedisTemplate配置完成
-2025-10-26T19:23:12.142+08:00  INFO 10636 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
-2025-10-26T19:23:12.152+08:00  INFO 10636 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Started SkyBackendApplication in 3.799 seconds (process running for 4.373)
-2025-10-26T19:27:10.368+08:00  INFO 10636 --- [in_sky1] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-10-26T19:27:10.369+08:00  INFO 10636 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-10-26T19:27:10.370+08:00  INFO 10636 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2025-10-26T19:27:10.722+08:00  INFO 10636 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.MinioUtil       : 文件已存在，返回已存在的路径
-2025-10-26T19:31:22.572+08:00  INFO 10636 --- [in_sky1] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-10-26T19:31:22.582+08:00  INFO 10636 --- [in_sky1] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-10-26T19:31:22.594+08:00  INFO 10636 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-10-26T19:31:22.599+08:00  INFO 10636 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-30T14:43:24.328+08:00  INFO 7268 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 7268 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
+2025-10-30T14:43:24.335+08:00  INFO 7268 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T14:43:25.154+08:00  INFO 7268 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-30T14:43:25.156+08:00  INFO 7268 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-30T14:43:25.186+08:00  INFO 7268 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2025-10-30T14:43:25.759+08:00  INFO 7268 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-10-30T14:43:25.773+08:00  INFO 7268 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T14:43:25.773+08:00  INFO 7268 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-30T14:43:25.836+08:00  INFO 7268 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T14:43:25.836+08:00  INFO 7268 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1460 ms
+2025-10-30T14:43:25.954+08:00  INFO 7268 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-30T14:43:26.311+08:00  INFO 7268 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c9e19de
+2025-10-30T14:43:26.313+08:00  INFO 7268 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-30T14:43:27.256+08:00  INFO 7268 --- [in_sky1] [main] com.sky.skybackend.config.RedisConfig    : RedisTemplate配置完成
+2025-10-30T14:43:28.171+08:00  INFO 7268 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-10-30T14:43:28.181+08:00  INFO 7268 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Started SkyBackendApplication in 4.284 seconds (process running for 5.059)
+2025-10-30T14:43:34.068+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-30T14:43:34.069+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-30T14:43:34.070+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-30T14:43:34.191+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 3
+2025-10-30T14:43:34.192+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T14:43:46.737+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T14:43:46.737+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T14:45:10.484+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T14:45:10.484+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T14:45:11.842+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 4
+2025-10-30T14:45:11.842+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T14:45:18.167+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T14:45:18.167+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T14:54:17.967+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 3
+2025-10-30T14:54:17.968+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T14:55:17.777+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:56:10.328+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:57:00.819+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:57:31.005+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:57:33.133+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:57:52.959+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:57:53.651+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:57:53.822+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:57:54.123+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:58:57.282+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:58:57.859+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:59:02.232+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T14:59:48.799+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:00:00.028+08:00  INFO 7268 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 开始执行热度排行榜计算
+2025-10-30T15:00:00.376+08:00  INFO 7268 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 热度排行榜计算完成，共处理 4 个视频
+2025-10-30T15:00:57.524+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:01:03.211+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:02:13.696+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:03:00.685+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:03:17.264+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:03:44.257+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:04:46.528+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:04:50.314+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:04:56.632+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:05:01.730+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:05:11.635+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:07:44.118+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:07:46.430+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:29:33.908+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:34:31.671+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:34:35.009+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:34:35.481+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:34:38.512+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:34:38.706+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:35:21.455+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:36:26.708+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'cursor': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "cursor123"]
+2025-10-30T15:37:33.692+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:37:35.433+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:37:38.938+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:37:41.553+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:38:28.045+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:38:49.674+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:38:52.324+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:39:25.366+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:39:51.908+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:40:16.765+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:40:27.175+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:42:55.136+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:43:08.629+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:43:17.577+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:43:18.170+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:43:18.341+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:43:18.522+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:43:30.979+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:43:51.233+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:45:09.561+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:45:51.671+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T15:45:51.672+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T15:45:57.702+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:45:58.722+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:46:06.980+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:46:13.703+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T15:46:13.703+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T15:46:28.533+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T15:46:28.534+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T15:54:11.130+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:11.130+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:21.361+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:21.362+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:33.007+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:54:36.235+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:54:38.508+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:38.508+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:41.104+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:54:42.887+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:42.887+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:45.111+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:54:46.949+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:46.949+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:50.507+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:50.507+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:52.615+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:52.615+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:54.469+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:54:54.470+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:54:56.219+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:55:33.017+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:55:34.011+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:55:34.011+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:55:37.584+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T15:55:37.584+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T15:56:08.820+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T15:56:28.677+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T15:56:28.678+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T15:57:58.975+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T15:57:58.975+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T16:00:00.006+08:00  INFO 7268 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 开始执行热度排行榜计算
+2025-10-30T16:00:00.029+08:00  INFO 7268 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 热度排行榜计算完成，共处理 4 个视频
+2025-10-30T16:03:23.797+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:03:23.797+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:03:29.012+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:03:31.876+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:03:32.645+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:03:32.645+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-10] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:09:39.939+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:09:45.853+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T16:09:45.853+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T16:10:30.061+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:10:30.061+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:10:34.631+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:11:06.760+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:11:19.892+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:11:24.565+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:11:29.247+08:00  INFO 7268 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:16:04.944+08:00  WARN 7268 --- [in_sky1] [http-nio-8081-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-10-30T16:16:40.371+08:00  INFO 7268 --- [in_sky1] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-30T16:16:40.384+08:00  INFO 7268 --- [in_sky1] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-30T16:16:40.433+08:00  INFO 7268 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-30T16:16:40.437+08:00  INFO 7268 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-30T16:16:45.350+08:00  INFO 22660 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 22660 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
+2025-10-30T16:16:45.353+08:00  INFO 22660 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T16:16:46.217+08:00  INFO 22660 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-30T16:16:46.220+08:00  INFO 22660 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-30T16:16:46.250+08:00  INFO 22660 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2025-10-30T16:16:46.814+08:00  INFO 22660 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-10-30T16:16:46.831+08:00  INFO 22660 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T16:16:46.831+08:00  INFO 22660 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-30T16:16:46.900+08:00  INFO 22660 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T16:16:46.901+08:00  INFO 22660 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1509 ms
+2025-10-30T16:16:47.053+08:00  INFO 22660 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-30T16:16:47.419+08:00  INFO 22660 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@56f9de3b
+2025-10-30T16:16:47.420+08:00  INFO 22660 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-30T16:16:48.480+08:00  INFO 22660 --- [in_sky1] [main] com.sky.skybackend.config.RedisConfig    : RedisTemplate配置完成
+2025-10-30T16:16:49.510+08:00  INFO 22660 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-10-30T16:16:49.522+08:00  INFO 22660 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Started SkyBackendApplication in 4.689 seconds (process running for 5.449)
+2025-10-30T16:16:52.331+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-30T16:16:52.332+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-30T16:16:52.333+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-30T16:16:52.349+08:00  WARN 22660 --- [in_sky1] [http-nio-8081-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-10-30T16:29:07.385+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:29:12.001+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:29:12.002+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:39:59.593+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:40:04.321+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:40:04.321+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:40:06.886+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:40:08.370+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:40:08.371+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:40:30.901+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:40:33.433+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:40:34.646+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:40:35.321+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:40:36.056+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:40:36.727+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:40:36.727+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:42:14.543+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:42:16.461+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T16:42:17.085+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:42:17.085+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:51:23.634+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:51:23.634+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:52:42.121+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:52:42.122+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T16:56:00.714+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T16:56:00.715+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T17:00:00.018+08:00  INFO 22660 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 开始执行热度排行榜计算
+2025-10-30T17:00:00.369+08:00  INFO 22660 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 热度排行榜计算完成，共处理 4 个视频
+2025-10-30T17:58:45.294+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T17:58:45.294+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:00:00.014+08:00  INFO 22660 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 开始执行热度排行榜计算
+2025-10-30T18:00:00.020+08:00  INFO 22660 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 热度排行榜计算完成，共处理 4 个视频
+2025-10-30T18:00:05.866+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:00:05.866+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:00:46.357+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:00:46.357+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:10:28.484+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T18:10:28.484+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T18:11:16.736+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:11:16.736+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:11:18.127+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:11:18.127+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:12:03.881+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T18:12:08.602+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:12:08.603+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:12:14.032+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T18:12:14.032+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T18:12:15.060+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T18:12:20.234+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:12:20.235+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:12:28.221+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:12:28.222+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:26:53.289+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T18:27:03.108+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T18:27:05.436+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T18:27:05.436+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T18:29:01.473+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:29:01.474+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T18:50:41.251+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T18:50:41.251+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:00:00.015+08:00  INFO 22660 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 开始执行热度排行榜计算
+2025-10-30T19:00:00.031+08:00  INFO 22660 --- [in_sky1] [scheduling-1] com.sky.skybackend.schedul.HotRank       : 热度排行榜计算完成，共处理 4 个视频
+2025-10-30T19:04:33.356+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T19:04:33.356+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T19:07:36.704+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:07:53.170+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:07:58.551+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:08:10.429+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:08:13.656+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:08:13.656+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:08:16.471+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:08:16.471+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:08:17.799+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T19:08:17.799+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T19:08:24.464+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:08:29.970+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:08:31.877+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:08:34.294+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:08:34.294+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:08:38.571+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:08:48.018+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:08:48.019+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:08:56.122+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:08:56.122+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:08:57.972+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:08:57.973+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:08:59.061+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:08:59.061+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:09:00.879+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:09:00.879+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:09:13.637+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:09:13.637+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:09:17.023+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:09:24.948+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:09:24.948+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:09:31.812+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T19:09:31.812+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T19:09:37.316+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:09:41.059+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:09:41.059+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:09:46.148+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:09:46.148+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:09:47.469+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:09:51.924+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:09:53.428+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:09:53.428+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-4] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:09:57.802+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-5] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:10:15.255+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T19:10:15.256+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T19:10:57.239+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:10:58.890+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:10:58.890+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:21:44.020+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:21:50.520+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:21:58.842+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:21:58.842+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:23:25.670+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:23:27.851+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-8] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:23:28.825+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:23:28.825+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:24:27.021+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 0
+2025-10-30T19:24:34.454+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 1
+2025-10-30T19:24:34.454+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-3] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:34:06.634+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T19:34:06.634+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-7] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T19:34:21.751+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T19:34:21.751+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-9] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:34:28.743+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 4
+2025-10-30T19:34:28.743+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-10] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T19:38:33.112+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 2
+2025-10-30T19:38:33.112+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T19:39:41.565+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 3
+2025-10-30T19:39:41.565+08:00  INFO 22660 --- [in_sky1] [http-nio-8081-exec-6] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T19:46:41.131+08:00  INFO 22660 --- [in_sky1] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-30T19:46:41.142+08:00  INFO 22660 --- [in_sky1] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-30T19:46:41.169+08:00  INFO 22660 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-30T19:46:41.173+08:00  INFO 22660 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-30T20:32:32.944+08:00  INFO 20816 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 20816 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
+2025-10-30T20:32:32.946+08:00  INFO 20816 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T20:32:33.822+08:00  INFO 20816 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-30T20:32:33.825+08:00  INFO 20816 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-30T20:32:33.854+08:00  INFO 20816 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2025-10-30T20:32:34.451+08:00  INFO 20816 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-10-30T20:32:34.467+08:00  INFO 20816 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T20:32:34.467+08:00  INFO 20816 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-30T20:32:34.527+08:00  INFO 20816 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T20:32:34.527+08:00  INFO 20816 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1545 ms
+2025-10-30T20:32:34.639+08:00  INFO 20816 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-30T20:32:34.973+08:00  INFO 20816 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ba0ee4a
+2025-10-30T20:32:34.975+08:00  INFO 20816 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-30T20:32:35.976+08:00  INFO 20816 --- [in_sky1] [main] com.sky.skybackend.config.RedisConfig    : RedisTemplate配置完成
+2025-10-30T20:32:36.879+08:00  INFO 20816 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-10-30T20:32:36.889+08:00  INFO 20816 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Started SkyBackendApplication in 4.357 seconds (process running for 4.97)
+2025-10-30T20:33:11.589+08:00  INFO 20816 --- [in_sky1] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-30T20:33:11.589+08:00  INFO 20816 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-30T20:33:11.590+08:00  INFO 20816 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-30T20:33:11.762+08:00  INFO 20816 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T20:33:23.502+08:00  INFO 20816 --- [in_sky1] [http-nio-8081-exec-2] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T20:34:38.352+08:00  INFO 20816 --- [in_sky1] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-30T20:34:38.362+08:00  INFO 20816 --- [in_sky1] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-30T20:34:38.376+08:00  INFO 20816 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-30T20:34:38.382+08:00  INFO 20816 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-30T20:34:42.426+08:00  INFO 13248 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 13248 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
+2025-10-30T20:34:42.428+08:00  INFO 13248 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T20:34:43.093+08:00  INFO 13248 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-30T20:34:43.096+08:00  INFO 13248 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-30T20:34:43.121+08:00  INFO 13248 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2025-10-30T20:34:43.580+08:00  INFO 13248 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-10-30T20:34:43.592+08:00  INFO 13248 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T20:34:43.592+08:00  INFO 13248 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-30T20:34:43.647+08:00  INFO 13248 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T20:34:43.647+08:00  INFO 13248 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1185 ms
+2025-10-30T20:34:43.749+08:00  INFO 13248 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-30T20:34:44.012+08:00  INFO 13248 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@222d9d4f
+2025-10-30T20:34:44.014+08:00  INFO 13248 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-30T20:34:44.852+08:00  INFO 13248 --- [in_sky1] [main] com.sky.skybackend.config.RedisConfig    : RedisTemplate配置完成
+2025-10-30T20:34:45.788+08:00  INFO 13248 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-10-30T20:34:45.798+08:00  INFO 13248 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Started SkyBackendApplication in 3.758 seconds (process running for 4.309)
+2025-10-30T20:34:47.864+08:00  INFO 13248 --- [in_sky1] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-30T20:34:47.864+08:00  INFO 13248 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-30T20:34:47.865+08:00  INFO 13248 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-30T20:34:47.996+08:00  INFO 13248 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 1
+2025-10-30T20:34:56.096+08:00  INFO 13248 --- [in_sky1] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-30T20:34:56.106+08:00  INFO 13248 --- [in_sky1] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-30T20:34:56.119+08:00  INFO 13248 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-30T20:34:56.124+08:00  INFO 13248 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-30T20:47:01.274+08:00  INFO 13120 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Starting SkyBackendApplication using Java 21.0.4 with PID 13120 (D:\software\GitProject\skyBackend\target\classes started by W71one in D:\software\GitProject\skyBackend)
+2025-10-30T20:47:01.277+08:00  INFO 13120 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T20:47:02.266+08:00  INFO 13120 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-30T20:47:02.269+08:00  INFO 13120 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-30T20:47:02.312+08:00  INFO 13120 --- [in_sky1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+2025-10-30T20:47:03.002+08:00  INFO 13120 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-10-30T20:47:03.024+08:00  INFO 13120 --- [in_sky1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T20:47:03.025+08:00  INFO 13120 --- [in_sky1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-30T20:47:03.100+08:00  INFO 13120 --- [in_sky1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T20:47:03.100+08:00  INFO 13120 --- [in_sky1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1770 ms
+2025-10-30T20:47:03.270+08:00  INFO 13120 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-30T20:47:03.590+08:00  INFO 13120 --- [in_sky1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e98b933
+2025-10-30T20:47:03.592+08:00  INFO 13120 --- [in_sky1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-30T20:47:04.519+08:00  INFO 13120 --- [in_sky1] [main] com.sky.skybackend.config.RedisConfig    : RedisTemplate配置完成
+2025-10-30T20:47:05.490+08:00  INFO 13120 --- [in_sky1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-10-30T20:47:05.505+08:00  INFO 13120 --- [in_sky1] [main] c.sky.skybackend.SkyBackendApplication   : Started SkyBackendApplication in 4.822 seconds (process running for 5.593)
+2025-10-30T20:47:06.031+08:00  INFO 13120 --- [in_sky1] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-30T20:47:06.031+08:00  INFO 13120 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-30T20:47:06.032+08:00  INFO 13120 --- [in_sky1] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-30T20:47:06.145+08:00  INFO 13120 --- [in_sky1] [http-nio-8081-exec-1] c.s.s.s.ServiceImpl.VideoServiceImpl     : 查询到的视频列表数量: 5
+2025-10-30T20:47:06.146+08:00  INFO 13120 --- [in_sky1] [http-nio-8081-exec-1] com.sky.skybackend.utils.VideoUtil       : 待处理视频发布者ID集合大小: 2
+2025-10-30T20:51:25.263+08:00  INFO 13120 --- [in_sky1] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-30T20:51:25.272+08:00  INFO 13120 --- [in_sky1] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-30T20:51:25.284+08:00  INFO 13120 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-30T20:51:25.288+08:00  INFO 13120 --- [in_sky1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,30 +1,20 @@
 package com.sky.skybackend.controller;
 
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
 import com.sky.skybackend.Enum.Constant;
 import com.sky.skybackend.domain.dto.CommentDTO;
 import com.sky.skybackend.domain.dto.VideoDTO;
 import com.sky.skybackend.domain.pojo.Result;
 import com.sky.skybackend.domain.pojo.UserAction;
-import com.sky.skybackend.domain.pojo.Video;
 import com.sky.skybackend.domain.vo.CommentVO;
-import com.sky.skybackend.schedul.HotRank;
 import com.sky.skybackend.service.CommentService;
 import com.sky.skybackend.service.ServiceImpl.SlidingWindowTagScorerService;
 import com.sky.skybackend.service.VideoService;
-import com.sky.skybackend.utils.AliyunVideoAuditTool;
 import com.sky.skybackend.utils.MinioUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -85,7 +75,7 @@ public class VideoController {
      * @param userId 用户id
      * @return List<CommentVO>
      */
-    @PostMapping("/getComments")
+    @GetMapping("/getComments")
     public Result getComments(@RequestParam Integer videoId, @RequestParam(required = false) Integer userId) {
         return Result.success(commentService.getComments(videoId, userId));
     }
@@ -124,6 +114,10 @@ public class VideoController {
     @GetMapping("/getVideoByActionType")
     public Result getVideoByActionType(@RequestParam Integer userId,@RequestParam int type) {
         return Result.success(videoService.getVideoByActionType(userId,type));
+    }
+    @GetMapping("/getVideoByUserId")
+    public Result getVideoByUserId(@RequestParam Integer userId) {
+        return Result.success(videoService.getVideoByUserId(userId));
     }
 
     /**
